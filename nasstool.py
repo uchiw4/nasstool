@@ -23,7 +23,7 @@ print(Fade.Vertical(Colors.red_to_blue, center(text)))
 
 
 
-bot = commands.Bot(command_prefix= "", self_bot=True)
+client = discord.Client(self_bot=True)
 
 #entrée du token
 TOKEN = input("\033[1;31;40m Ton token :  \033")
@@ -62,50 +62,50 @@ elif n ==5:
 
 
 #evenement du bot
-@bot.event
+@client.event
 async def on_ready():
-    print("\033[1;31;40m C'est bon, tu peux maintenant profiter de ton nouveau statut animé !\033")
+    print("\033[1;31;40m Connecté au compte de {0.user} tu peux maintenant profiter de ton statut perso !\033".format(client))
     print("")
     print("\033[1;31;40m(ne ferme pas cette fenêtre si tu veux que le logiciel continue de fonctionner)\033")
     
 
     if b == 1:
-        await bot.change_presence(activity=discord.Game(name=status1))
+        await client.change_presence(activity=discord.Game(name=status1))
     elif b == 2:
         while True:
-            await bot.change_presence(activity=discord.Game(name=status1))
+            await client.change_presence(activity=discord.Game(name=status1))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status2))
+            await client.change_presence(activity=discord.Game(name=status2))
             await asyncio.sleep(10)
     elif b == 3:
         while True:
-            await bot.change_presence(activity=discord.Game(name=status1))
+            await client.change_presence(activity=discord.Game(name=status1))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status2))
+            await client.change_presence(activity=discord.Game(name=status2))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status3))
+            await client.change_presence(activity=discord.Game(name=status3))
             await asyncio.sleep(10)
     elif b == 4:
         while True:
-            await bot.change_presence(activity=discord.Game(name=status1))
+            await client.change_presence(activity=discord.Game(name=status1))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status2))
+            await client.change_presence(activity=discord.Game(name=status2))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status3))
+            await client.change_presence(activity=discord.Game(name=status3))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status4))
+            await client.change_presence(activity=discord.Game(name=status4))
             await asyncio.sleep(10)
     elif b == 5:
         while True:
-            await bot.change_presence(activity=discord.Game(name=status1))
+            await client.change_presence(activity=discord.Game(name=status1))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status2))
+            await client.change_presence(activity=discord.Game(name=status2))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status3))
+            await client.change_presence(activity=discord.Game(name=status3))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status4))
+            await client.change_presence(activity=discord.Game(name=status4))
             await asyncio.sleep(10)
-            await bot.change_presence(activity=discord.Game(name=status5))
+            await client.change_presence(activity=discord.Game(name=status5))
             await asyncio.sleep(10)
 
 
@@ -115,7 +115,7 @@ async def on_ready():
 
 #connection
 
-bot.run(TOKEN, bot=False)
+client.run(TOKEN, bot=False)
     
 
 
