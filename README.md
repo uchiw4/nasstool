@@ -17,7 +17,8 @@ Commence par renseigner ton token discord !
 Ensuite tu choisis combien de statuts tu veux.
 
 Et voila le résultat
-![image](https://user-images.githubusercontent.com/77907223/126356846-1331c21b-3b00-4d1e-a29b-6896c063e449.gif)
+![ezgif-2-41ab03333419](https://user-images.githubusercontent.com/77907223/126357005-4e853a77-8ee5-4fc9-89b2-c9ac96780f55.gif)
+
 
 
 
