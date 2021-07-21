@@ -47,7 +47,7 @@ elif n ==4:
     status1 = input("\033[1;31;40m Statut 1:  \033")
     status2 = input("\033[1;31;40m Statut 2:  \033")
     status3 = input("\033[1;31;40m Statut 3:  \033")
-    status4 = input("\033[1;31;40m Statut 3:  \033")
+    status4 = input("\033[1;31;40m Statut 4:  \033")
     b=4
 elif n ==5:
     status1 = input("\033[1;31;40m Statut 1:  \033")
