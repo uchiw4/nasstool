@@ -29,7 +29,30 @@ with open("hello.json","r+") as f:
         stattry = data_raw["token"]
 
 if stattry == "":
-    pass
+    TOKEN = input("\033[1;31;40m Ton token :  \033")
+
+    #statut
+    statuslist = []
+    cmb = int(input("\033[1;31;40m Combien de statuts veux-tu ?  \033"))
+
+    for i in range(cmb):
+        
+        whatstatus = input(f"\033[1;31;40m Statut {i+1}:  \033")
+        statuslist.append(whatstatus)
+    
+    if stattry == "":
+
+        asktosave = input("\033[1;31;40m Souhaites-tu enregistrer un nouveau profil pour pouvoir le réutiliser la prochaine fois ? [o/n]  \033")
+        if asktosave == "o":
+            with open("hello.json","r+") as f:
+                data_raw = json.load(f)
+                data_raw["token"] = TOKEN
+                data_raw["statuts"] = statuslist
+                data_raw["cmb"] = cmb
+                f.seek(0)
+                json.dump(data_raw,f,indent=4)
+                f.truncate() 
+
 else:
     loadstatus = input("\033[1;31;40m Tu as déjà un profil enregistré, souhaites-tu le charger ? [o/n] \033")
     if loadstatus =="o":
@@ -62,36 +85,6 @@ else:
                 f.seek(0)
                 json.dump(data_raw,f,indent=4)
                 f.truncate() 
-
-
-
-
-if stattry == "":
-    TOKEN = input("\033[1;31;40m Ton token :  \033")
-
-    #statut
-    statuslist = []
-    cmb = int(input("\033[1;31;40m Combien de statuts veux-tu ?  \033"))
-
-    for i in range(cmb):
-        
-        whatstatus = input(f"\033[1;31;40m Statut {i+1}:  \033")
-        statuslist.append(whatstatus)
-    
-    if stattry == "":
-
-        asktosave = input("\033[1;31;40m Souhaites-tu enregistrer un nouveau profil pour pouvoir le réutiliser la prochaine fois ? [o/n]  \033")
-        if asktosave == "o":
-            with open("hello.json","r+") as f:
-                data_raw = json.load(f)
-                data_raw["token"] = TOKEN
-                data_raw["statuts"] = statuslist
-                data_raw["cmb"] = cmb
-                f.seek(0)
-                json.dump(data_raw,f,indent=4)
-                f.truncate() 
-    
-
 
 
 
