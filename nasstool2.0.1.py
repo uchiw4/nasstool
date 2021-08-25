@@ -1,9 +1,9 @@
-from discord.ext import commands
 from pyfade import Fade, Colors
 from pycenter import center
 import discord
 import asyncio
 import json
+import os 
 
 text ="""
 ███╗   ██╗ █████╗ ███████╗███████╗████████╗ ██████╗  ██████╗ ██╗     
@@ -17,6 +17,8 @@ by uchiw4 le beau gosse
 
 
 """
+os.system("clear")
+
 print(Fade.Vertical(Colors.red_to_purple, center(text)))
 
 
@@ -40,18 +42,17 @@ if stattry == "":
         whatstatus = input(f"\033[1;31;40m Statut {i+1}:  \033")
         statuslist.append(whatstatus)
     
-    if stattry == "":
 
-        asktosave = input("\033[1;31;40m Souhaites-tu enregistrer un nouveau profil pour pouvoir le réutiliser la prochaine fois ? [o/n]  \033")
-        if asktosave == "o":
-            with open("hello.json","r+") as f:
-                data_raw = json.load(f)
-                data_raw["token"] = TOKEN
-                data_raw["statuts"] = statuslist
-                data_raw["cmb"] = cmb
-                f.seek(0)
-                json.dump(data_raw,f,indent=4)
-                f.truncate() 
+    asktosave = input("\033[1;31;40m Souhaites-tu enregistrer un nouveau profil pour pouvoir le réutiliser la prochaine fois ? [o/n]  \033")
+    if asktosave == "o":
+        with open("hello.json","r+") as f:
+            data_raw = json.load(f)
+            data_raw["token"] = TOKEN
+            data_raw["statuts"] = statuslist
+            data_raw["cmb"] = cmb
+            f.seek(0)
+            json.dump(data_raw,f,indent=4)
+            f.truncate() 
 
 else:
     loadstatus = input("\033[1;31;40m Tu as déjà un profil enregistré, souhaites-tu le charger ? [o/n] \033")
@@ -75,7 +76,7 @@ else:
             
             whatstatus = input(f"\033[1;31;40m Statut {i+1}:  \033")
             statuslist.append(whatstatus)
-            asktosave = input("\033[1;31;40m Souhaites-tu remplacer ton ancien profil par ce que tu viens de créer ? [o/n]  \033")
+        asktosave = input("\033[1;31;40m Souhaites-tu remplacer ton ancien profil par ce que tu viens de créer ? [o/n]  \033")
         if asktosave == "o":
             with open("hello.json","r+") as f:
                 data_raw = json.load(f)
@@ -101,5 +102,13 @@ async def on_ready():
             await asyncio.sleep(10)
 
 #connection
+def run():
+    try:
+        client.run(TOKEN, bot=False)
+    except:
+        raise ValueError
 
-client.run(TOKEN, bot=False)
+try:
+    run()
+except ValueError:
+    print("Token Invalide !")
