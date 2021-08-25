@@ -1,9 +1,30 @@
-from pyfade import Fade, Colors
-from pycenter import center
-import discord
-import asyncio
-import json
 import os 
+import json
+import ctypes
+
+try:
+    import asyncio
+except Exception:
+    os.system("python3 -m pip install asyncio")
+    import asyncio
+
+try:
+    from pyfade import Fade, Colors
+except Exception:
+    os.system("python3 -m pip install pyfade")
+    from pyfade import Fade, Colors
+
+try:
+    from pycenter import center
+except Exception:
+    os.system("python3 -m pip install pycenter")
+    from pycenter import center
+
+try:
+    import discord
+except Exception:
+    os.system("python3 -m pip install discord")
+    import discord
 
 text ="""
 ███╗   ██╗ █████╗ ███████╗███████╗████████╗ ██████╗  ██████╗ ██╗     
@@ -19,8 +40,13 @@ by uchiw4 le beau gosse
 """
 os.system("clear")
 
-print(Fade.Vertical(Colors.red_to_purple, center(text)))
+ctypes.windll.kernel32.SetConsoleTitleW("nastool rafael le beau gosse")
 
+
+def nasstool(): 
+    print(Fade.Vertical(Colors.red_to_purple, center(text)))
+
+nasstool()
 
 
 client = discord.Client(self_bot=True)
@@ -73,9 +99,10 @@ else:
         cmb = int(input("\033[1;31;40m Combien de statuts veux-tu ?  \033"))
 
         for i in range(cmb):
-            
+
             whatstatus = input(f"\033[1;31;40m Statut {i+1}:  \033")
             statuslist.append(whatstatus)
+
         asktosave = input("\033[1;31;40m Souhaites-tu remplacer ton ancien profil par ce que tu viens de créer ? [o/n]  \033")
         if asktosave == "o":
             with open("hello.json","r+") as f:
@@ -88,10 +115,13 @@ else:
                 f.truncate() 
 
 
-
 #evenement du bot
 @client.event
 async def on_ready():
+    os.system("clear")
+    nasstool()
+
+    print("")
     print("\033[1;31;40m Connecté au compte de {0.user} tu peux maintenant profiter de ton statut perso !\033".format(client))
     print("")
     print("\033[1;31;40m(ne ferme pas cette fenêtre si tu veux que le logiciel continue de fonctionner)\033")
@@ -102,13 +132,4 @@ async def on_ready():
             await asyncio.sleep(10)
 
 #connection
-def run():
-    try:
-        client.run(TOKEN, bot=False)
-    except:
-        raise ValueError
-
-try:
-    run()
-except ValueError:
-    print("Token Invalide !")
+client.run(TOKEN, bot=False)
